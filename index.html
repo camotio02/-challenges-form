@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furmulário</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <h1>Formulário</h1>
+    <form method="post" onsubmit="return validacao()" action="www.form.com">
+        <div class="mini_container">
+            <label>Nome completo</label>
+            <input name="name" value="" type="text">
+        </div>
+        <div class="mini_container">
+            <label>Email</label>
+            <input name="email" value="" type="email">
+        </div>
+        <div class="mini_container">
+            <label>Número de telefone</label>
+            <input name="number" value="" type="number">
+        </div>
+        <div class="mini_container">
+            <label>Data de nascimento</label>
+            <input value="" name="birth" type="text">
+        </div>
+        <div class="container">
+            <label>Sexo</label>
+            <div class="mini_container">
+                <label>Masculino</label>
+                <input checked type="radio" name="sex" value="masculino">
+            </div>
+            <div class="mini_container">
+                <label>Femenino</label>
+                <input type="radio" name="sex" value="feminino">
+            </div>
+        </div>
+        <div class="mini_container">
+            <label>Senha</label>
+            <input value="" name="password" type="password">
+        </div>
+        <div class="mini_container">
+            <label>Senha de confirmação</label>
+            <input value="" name="confirmPassword" type="password">
+        </div>
+        <button type="submit" onclick="validacao()">Validar o formulário</button>
+    </form>
+    <script src="./index.js"></script>
+</body>
+
+</html>
