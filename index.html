@@ -8,15 +8,11 @@
     <title>Furmulário</title>
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
-
-
-
+<!-- onsubmit="return validacao()" action="www.form.com" -->
 
 <body>
-
-
-    <form method="post" onsubmit="return validacao()" action="www.form.com">
-        <h1>Formulário</h1>
+    <h1>Formulário</h1>
+    <form class="forms" method="get" name="formvalidation">
         <div class="mini_container">
 
             <label>Nome completo</label>
@@ -33,7 +29,7 @@
         </div>
         <div class="mini_container">
             <label>Data de nascimento</label>
-            <input value="" name="birth" type="text" placeholder="25/02/2003">
+            <input value="" name="birth" type="number">
         </div>
         <div class="container">
             <label>Sexo</label>
@@ -61,32 +57,31 @@
         <div class="mini_container1-botton">
             <button onclick="viewSenha()">Validar o formulário</button>
         </div>
-
     </form>
+    <button class="submit" onclick="validacao()">Validar o formulário</button>
+    <script src="./index.js"></script>
+    <script>
+        const Senha = document.querySelectorAll('.Senha')
+        const btn = document.querySelector('bth')
 
+        btn.onclick = () => {
+            console.log('active no momento')
+            var tipo = document.getElementById("senha")
 
+            if (Senha.type === "password") {
+
+                Senha.type = "text";
+                btn.src = 'eye-off.png';
+            }
+            else {
+                Senha.type = "password";
+                btn.src = 'eye';
+            }
+
+        }
+
+    </script>
 </body>
 
-<script>
-    const Senha = document.querySelectorAll('.Senha')
-    const btn = document.querySelector('bth')
-
-    btn.onclick = () => {
-        console.log('active no momento')
-        var tipo = document.getElementById("senha")
-
-        if (Senha.type === "password") {
-
-            Senha.type = "text";
-            btn.src = 'eye-off.png';
-        }
-        else {
-            Senha.type = "password";
-            btn.src = 'eye';
-        }
-
-    }
-
-</script>
 
 </html>
