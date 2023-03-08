@@ -54,33 +54,9 @@
             <label>Senha de confirmação</label>
             <input value="" name="confirmPassword" type="password" placeholder="Confirm-password">
         </div>
-        <div class="mini_container1-botton">
-            <button onclick="viewSenha()">Validar o formulário</button>
-        </div>
+        <button class="submit" onclick="validacao()">Validar o formulário</button>
     </form>
-    <button class="submit" onclick="validacao()">Validar o formulário</button>
-    <script src="./index.js"></script>
-    <script>
-        const Senha = document.querySelectorAll('.Senha')
-        const btn = document.querySelector('bth')
-
-        btn.onclick = () => {
-            console.log('active no momento')
-            var tipo = document.getElementById("senha")
-
-            if (Senha.type === "password") {
-
-                Senha.type = "text";
-                btn.src = 'eye-off.png';
-            }
-            else {
-                Senha.type = "password";
-                btn.src = 'eye';
-            }
-
-        }
-
-    </script>
+    <script class="mini_container1-botton" src="./index.js"></script>
 </body>
 
 
