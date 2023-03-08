@@ -9,47 +9,84 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
+
+
+
 <body>
-    <h1>Formulário</h1>
+
+
     <form method="post" onsubmit="return validacao()" action="www.form.com">
+        <h1>Formulário</h1>
         <div class="mini_container">
+
             <label>Nome completo</label>
-            <input name="name" value="" type="text">
+            <input name="name" value="" type="text" placeholder="Name:">
         </div>
         <div class="mini_container">
+
             <label>Email</label>
-            <input name="email" value="" type="email">
+            <input name="email" value="" type="email" placeholder="Email">
         </div>
         <div class="mini_container">
             <label>Número de telefone</label>
-            <input name="number" value="" type="number">
+            <input name="number" value="" type="number" placeholder=" (+55) DDD">
         </div>
         <div class="mini_container">
             <label>Data de nascimento</label>
-            <input value="" name="birth" type="text">
+            <input value="" name="birth" type="text" placeholder="25/02/2003">
         </div>
         <div class="container">
             <label>Sexo</label>
-            <div class="mini_container">
+            <div class="wrapper">
                 <label>Masculino</label>
                 <input checked type="radio" name="sex" value="masculino">
             </div>
-            <div class="mini_container">
+            <div class="wrapper">
                 <label>Femenino</label>
                 <input type="radio" name="sex" value="feminino">
             </div>
         </div>
         <div class="mini_container">
             <label>Senha</label>
-            <input value="" name="password" type="password">
+            <div class="div-password">
+                <input class="Senha" value="" name="password" type="password" placeholder="Password">
+                <img src="./asssets/eye.png" class="bth" onclick="clicknobotao()" alt="">
+            </div>
+
         </div>
         <div class="mini_container">
             <label>Senha de confirmação</label>
-            <input value="" name="confirmPassword" type="password">
+            <input value="" name="confirmPassword" type="password" placeholder="Confirm-password">
         </div>
-        <button type="submit" onclick="validacao()">Validar o formulário</button>
+        <div class="mini_container1-botton">
+            <button onclick="viewSenha()">Validar o formulário</button>
+        </div>
+
     </form>
-    <script src="./index.js"></script>
+
+
 </body>
+
+<script>
+    const Senha = document.querySelectorAll('.Senha')
+    const btn = document.querySelector('bth')
+
+    btn.onclick = () => {
+        console.log('active no momento')
+        var tipo = document.getElementById("senha")
+
+        if (Senha.type === "password") {
+
+            Senha.type = "text";
+            btn.src = 'eye-off.png';
+        }
+        else {
+            Senha.type = "password";
+            btn.src = 'eye';
+        }
+
+    }
+
+</script>
 
 </html>
