@@ -6,90 +6,129 @@ var codigosDDD = [
     64, 63, 65, 66, 67, 68, 69, 71, 73,
     74, 75, 77, 79, 81, 82, 83, 84, 85,
     86, 87, 88, 89, 91, 92, 93, 94, 95,
-    96, 97, 98, 99];
+    96, 97, 98, 99
+];
+var errorMessages = []
+var button = document.querySelector('.button')
+var buttonError = document.querySelector('.showFieldsErros')
 
 const validacao = () => {
     const today = new Date();
     const dada = document.forms["formvalidation"]
-    const errorMessages = []
+    const showError = document.querySelectorAll('span.error')
+    var terms = dada?.terms?.value
 
     // PEGANDO OS CAMPOS E SEUS RESPETIVOS VÁLORES
     const nome = dada?.name?.value
     const email = dada?.email?.value
     const number = dada?.number?.value
-    const birth = dada?.birth?.value
-    const sex = dada?.sex?.value
     const password = dada?.password?.value
     const passwordConfirm = dada?.confirmPassword?.value
-
+    console.log(terms)
     // SEPARANDO A DATA EM: DD,MM E AAAA
     const birthConfirm = {
-        birthDay: birth.substring(0, 2),
-        birthGetMonth: birth.substring(2, 4),
-        birthGetYear: new Number(birth.substring(4, 8))
+        birthDay: new Number(dada?.birthDay?.value),
+        birthGetMonth: new Number(dada?.birthMonth?.value),
+        birthGetYear: new Number(dada?.birthYear?.value),
     }
+
 
     // CRIANDO REGRAS DE CADA CAMPO DO FORM
-    const rulesfieldValidation = {
-        rulesTheName: nome.indexOf(" ") == -1,
-        rulesTheEmail: email.includes('@')
+    const rulesfieldsValidationForm = {
+        ruleTheName: nome.indexOf(" ") == -1,
+        ruleTheEmail: email.includes('@')
             && email.includes('.com'),
-        rulesTheNumber: codigosDDD.indexOf(parseInt(number.substring(0, 2)))
-            && number.length < 11,
-        rulesTheBirthOne: birth.length != 8,
-        rulesTheBirthTwo: (today.getFullYear() < birthConfirm?.birthGetYear),
-        rulesThePasswordOne: password.match(/[0-9]/g) == null,
-        rulesThePasswordTwo: password.match(/[a-z]/g) == null,
-        rulesThePasswordThree: password.match(/[/@#$?]/g) == null,
-        rulesTheConfirmPassword: passwordConfirm != password
+        rulesTheNumber: {
+            ruleTheNumberOne: codigosDDD.indexOf(parseInt(number.substring(0, 2))),
+            ruleTheNumberTwo: number.length < 11,
+        },
+        // DUAS REGRAS PARA O INPUT DATA DE NASCIMENTO
+        rulesFieldBirth: {
+            ruleTheBirthOne: birthConfirm?.birthDay > 31,
+            ruleTheBirthTwo: birthConfirm?.birthGetMonth > 12,
+            ruleTheBirthThree: birthConfirm?.birthGetYear < 1900,
+            ruleTheBirthFour: (today.getFullYear() < birthConfirm?.birthGetYear),
+        },
+        // TRÊS REGRAS PARA O INPUT PASSWORD
+        rulesFieldPassword: {
+            ruleThePasswordOne: password.match(/[0-9]/g) == null,
+            ruleThePasswordTwo: password.match(/[a-z]/g) == null,
+            ruleThePasswordThree: password.match(/[/@#$?]/g) == null,
+        },
+        ruleTheConfirmPassword: passwordConfirm != password
     }
-
-
+    console.log(rulesfieldsValidationForm)
 
     // VERIFICANDO AS REGRAS
-    if (rulesfieldValidation?.rulesTheName) {
-        const error = alert(`Nome precisa ser nome completo, 
-        não apenas um nome(Ex.: Abimael Neto, não ${nome}`)
+    if (rulesfieldsValidationForm?.ruleTheName) {
+        const error = `Nome precisa ser nome completo, 
+            não apenas um nome(Ex.: Abimael Neto, não ${nome}`
         errorMessages.push(`${error}`)
     }
-    if (!rulesfieldValidation?.rulesTheEmail) {
-        const error = alert(`Email precisa ser um email válido, contendo @ e também .com,
-        não ${email}`)
+    if (!rulesfieldsValidationForm?.ruleTheEmail) {
+        const error = `Email precisa ser um email válido, contendo @ e também .com,
+            não ${email}`
+
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesTheNumber) {
-        const error = alert(`Telefone precisa conter o 
-        DDD(Ex.: 41 99928238, não apenas ${number}`)
+    if (rulesfieldsValidationForm?.rulesTheNumber?.ruleTheNumberOne) {
+        const error = `Telefone precisa conter o 
+            DDD(Ex.: 41 99928238, não apenas ${number}`
+        errorMessages.push(`${error}`)
+    } else if (rulesfieldsValidationForm?.rulesTheNumber?.ruleTheNumberTwo) {
+        const error = `Telefone deve ter 11 números`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesTheBirthOne) {
-        const error = alert('Data de nascimento deve conter 8 números dd/mm/aaaa')
+    if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthOne) {
+        const error = `o campo DD não pode ser maior que 31`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesTheBirthTwo) {
-        const error = alert('Data de nascimento não pode ser posterior à data de hoje')
+    if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthTwo) {
+        const error = `o campo MM não pode ser maior que 12`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesThePasswordOne) {
-        const error = alert('O campo senha pelo menos um número')
+    if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthThree) {
+        const error = `o campo YYYY não pode ter menos que 4 números`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesThePasswordTwo) {
-        const error = alert('O campo senha deve conter uma letra minuscula pelo menos')
+    if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthFour) {
+        const error = `O ano não pode ser maior que atual!`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesThePasswordThree) {
-        const error = alert('O campo senha deve conter 1 simbolo pelo menos')
+    if (rulesfieldsValidationForm?.ruleThePasswordOne) {
+        const error = `O campo senha pelo menos um número`
+
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldValidation?.rulesTheConfirmPassword) {
-        const error = alert('A confirmação da senha deve ser igual á senha')
+    if (rulesfieldsValidationForm?.ruleThePasswordTwo) {
+        const error = `O campo senha deve conter uma letra minuscula pelo menos`
+        errorMessages.push(`${error}`)
+    }
+    if (rulesfieldsValidationForm?.ruleThePasswordThree) {
+        const error = (`O campo senha deve conter 1 simbolo pelo menos`)
+
+        errorMessages.push(`${error}`)
+    }
+    if (rulesfieldsValidationForm?.ruleTheConfirmPassword) {
+        const error = `A confirmação da senha deve ser igual á senha`
         errorMessages.push(`${error}`)
     }
     // VALIDÁÇÃO FINAL
     if (errorMessages.length == 0) {
         alert('Formulário válido')
+        return true
     } else {
+        const windowErros = errorMessages.map((item, index) => {
+            return index,item
+        })
+        alert(`${windowErros}`)
+        button.style.display = 'none'
+        buttonError.style.display = 'flex'
+        setTimeout(() => {
+            buttonError.style.display = 'none'
+            button.style.display = 'flex'
+        }, 4000)
         return false
     }
 }
+
