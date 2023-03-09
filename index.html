@@ -11,12 +11,7 @@
 <!-- onsubmit="return validacao()" action="www.form.com" -->
 
 <body>
-    <form 
-    class="forms" 
-    method="post" 
-    name="formvalidation" 
-    action="www.formValided.com"
-    onsubmit="return validacao()">
+    <form class="forms" method="post" name="formvalidation" action="www.formValided.com" onsubmit="return validacao()">
         <h1>Formulário</h1>
         <div class="mini_container">
 
@@ -56,46 +51,12 @@
         </div>
         <div class="mini_container">
             <label>Senha de confirmação</label>
-<<<<<<< HEAD
-            <div class="div-password">
-                <input value="" name="confirmPassword" type="password" placeholder="Confirm-password">
-                <img src="./asssets/eye.png" class="bth" onclick="clicknobotao()" alt="">
-            </div>
-        </div>
-        <div class="mini_container1-botton">
-            <button class="submit" onclick="validacao()">Validar o formulário</button>
-=======
-            <input value="" name="confirmPassword" type="password" placeholder="Confirmar a sua senha, pela senha criada!">
->>>>>>> e263db6f74e7c34b52904cb6ef11ffdd55f418a9
+            <input value="" name="confirmPassword" type="password"
+                placeholder="Confirmar a sua senha, pela senha criada!">
         </div>
         <button class="submit">Validar o formulário</button>
     </form>
-<<<<<<< HEAD
-    <script src="./index.js"></script>
-    <script>
-        const Senha = document.querySelectorAll('.Senha')
-        const btn = document.querySelector('bth')
-
-        btn.onclick = () => {
-            console.log('active no momento')
-            var tipo = document.getElementById("senha")
-
-            if (Senha.type === "password") {
-
-                Senha.type = "text";
-                btn.src = 'eye-off.png';
-            }
-            else {
-                Senha.type = "password";
-                btn.src = 'eye';
-            }
-
-        }
-
-    </script>
-=======
     <script class="mini_container1-botton" src="./index.js"></script>
->>>>>>> e263db6f74e7c34b52904cb6ef11ffdd55f418a9
 </body>
 
 

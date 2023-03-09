@@ -151,12 +151,13 @@ form {
     }
 }
 
-form input {
+
+
+form input{
     animation-name: move;
     animation-duration: 500ms;
     animation-delay: 0.250ms;
 }
-
 @keyframes  move {
     form {
         opacity: 0;
