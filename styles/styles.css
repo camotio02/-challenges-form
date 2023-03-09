@@ -17,7 +17,7 @@ form {
     align-items: center;
     justify-content: center; 
     width: 90%;
-    height: 100%;
+    height: 80%;
     border: 1px solid #000;
     background: rgb(0, 0, 0);
     background: linear-gradient(
@@ -32,29 +32,25 @@ form {
     gap: 15px;
 }
 form .mini_container {
-    height: 90px;
-    width: 90%;
-    /* background-color: rgb(47, 57, 5); */
-    background: transparent;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center ;
     flex-direction: column;
-    position: relative;
-    
-    
+    height: 90px;
+    width: 90%;
+    background: transparent;
 }
 form .mini_container label {
-    
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 0;
     left: 2rem;
     transition: 0.5s;
     color: #45f3ff;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     
 }
 form .mini_container:hover label {
@@ -90,15 +86,9 @@ form .mini_container1-botton  button {
     0 0 80px #45f3ff;
 }
 form .mini_container1-botton:hover button{
-    
-    
     box-shadow: 0 0 10px, #2196f3 
     0 0 20px #45f3ff,
     0 0 80px #45f3ff;
-   
-    
-
-
 }
 
 .mini_container1-botton {

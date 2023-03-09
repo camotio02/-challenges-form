@@ -11,8 +11,13 @@
 <!-- onsubmit="return validacao()" action="www.form.com" -->
 
 <body>
-    <h1>Formulário</h1>
-    <form class="forms" method="get" name="formvalidation">
+    <form 
+    class="forms" 
+    method="post" 
+    name="formvalidation" 
+    action="www.formValided.com"
+    onsubmit="return validacao()">
+        <h1>Formulário</h1>
         <div class="mini_container">
 
             <label>Nome completo</label>
@@ -45,16 +50,15 @@
         <div class="mini_container">
             <label>Senha</label>
             <div class="div-password">
-                <input class="Senha" value="" name="password" type="password" placeholder="Password">
-                <img src="./asssets/eye.png" class="bth" onclick="clicknobotao()" alt="">
+                <input class="Senha" value="" name="password" type="password" placeholder="criar uma senha!">
+                <img src="./asssets/eye.png" class="showPassword" onclick="clicknobotao()" alt="">
             </div>
-
         </div>
         <div class="mini_container">
             <label>Senha de confirmação</label>
-            <input value="" name="confirmPassword" type="password" placeholder="Confirm-password">
+            <input value="" name="confirmPassword" type="password" placeholder="Confirmar a sua senha, pela senha criada!">
         </div>
-        <button class="submit" onclick="validacao()">Validar o formulário</button>
+        <button class="submit">Validar o formulário</button>
     </form>
     <script class="mini_container1-botton" src="./index.js"></script>
 </body>
