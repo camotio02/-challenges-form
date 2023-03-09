@@ -8,6 +8,7 @@ body {
     height: 100vh;
     top: 0;
     left: 0;
+    overflow: hidden;
     background: rgb(0, 0, 0);
     font-family: 'popins', sans-serif;
 }
@@ -62,7 +63,7 @@ form .mini_container:hover label {
     color: #8f8f8f;
     transform: translateX(10px) translateY(-24px);
     transition: 0.5s;
-    font-size: 0.67em;
+    font-size: 0.79em;
     top: 0;
 }
 form .mini_container input {
@@ -74,7 +75,7 @@ form .mini_container input {
     font-size: 12pt;
     border: none;
     outline: none;
- 
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 }
 
 form .mini_container1-botton  button {
@@ -141,4 +142,38 @@ form .mini_container1-botton:hover button{
 .div-password img {
    width: 28px;
    cursor: pointer;
+   color: #2196f3
+}
+
+form {
+    animation-name: fede;
+    animation-duration: 500ms;
+}
+
+@keyframes  fede {
+    form {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+form input {
+    animation-name: move;
+    animation-duration: 500ms;
+    animation-delay: 0.250ms;
+}
+
+@keyframes  move {
+    form {
+        opacity: 0;
+        transform: translateX(-30%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
