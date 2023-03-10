@@ -12,9 +12,9 @@ var codigosDDD = [
 //CRIANDO O ARRAY DE ERROS
 var errorMessages = []
 var button = document.querySelector('.button')
-
+var forms = document.querySelector('.forms')
 var buttonError = document.querySelector('.showFieldsErros')
-
+var container = document.querySelector('.container')
 const validacao = () => {
     // PEGANDO A DATA DE HOJE
     const today = new Date();
@@ -127,7 +127,7 @@ const validacao = () => {
         errorMessages.push(`${error}`)
     }
 
-    
+
     // VALIDÁÇÃO FINAL, VERIFICANDO SE A ARRAY DE ERROR 
     // TEM ALGO OU NÃO.
     if (errorMessages.length == 0) {
@@ -137,7 +137,7 @@ const validacao = () => {
     } else {
         // SE NÃO TEM
         const windowErros = errorMessages.map((item, index) => {
-            return index, item
+            return(`\n Erro nos campos: ${index + 1} ${item}\n`)
         })
         alert(`${windowErros}`)
         button.style.display = 'none'
