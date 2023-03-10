@@ -1,0 +1,57 @@
+.container
+form
+h4 Formulário
+.input-group.input-group-icon
+input(type="text", placeholder="Nome completo" name="nome" value="")
+.input-icon img.input-icon
+span
+
+
+.input-group.input-group-icon
+input(type="text", placeholder="Digita seu email" name="email" value="")
+.input-icon img.input-icon
+span
+
+
+.input-group.input-group-icon
+input(type="text", placeholder="Digita seu número" name="number" value="")
+.input-icon img.input-icon
+span
+
+
+.input-group.input-group-icon
+input(type="text", placeholder="Criar uma senha" name="password" value="")
+.input-icon img.input-icon
+span
+
+.input-group.input-group-icon
+input(type="text", placeholder="Confirmar a sua senha" name="confirmPassword" value="")
+.input-icon img.input-icon
+span
+
+
+// segunda parte do from
+h4 Date of Birth
+.input-group
+.col-third
+input(type="text", placeholder="DD")
+.col-third
+input(type="text", placeholder="MM")
+.col-third
+input(type="text", placeholder="YYYY")
+
+.col-half
+h4 Gender
+.input-group
+input#gender-male(type="radio", name="gender", value="male")
+label(for="gender-male") Male
+input#gender-female(type="radio", name="gender", value="female")
+label(for="gender-female") Female
+
+// terceira parte do form
+h4 Terms and Conditions
+.input-group
+input#terms(type="checkbox")
+label(for="terms") I accept the terms and conditions for signing up to this service, and hereby confirm I have read the
+privacy policy.
+button.button (onclick="validacao()") Validar os dados 

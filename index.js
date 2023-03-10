@@ -1,3 +1,4 @@
+// CRINADO DDD's
 var codigosDDD = [
     11, 12, 13, 14, 15, 16, 17, 18, 19,
     21, 22, 24, 27, 28, 31, 32, 33, 34,
@@ -8,14 +9,23 @@ var codigosDDD = [
     86, 87, 88, 89, 91, 92, 93, 94, 95,
     96, 97, 98, 99
 ];
+//CRIANDO O ARRAY DE ERROS
 var errorMessages = []
 var button = document.querySelector('.button')
+
 var buttonError = document.querySelector('.showFieldsErros')
 
 const validacao = () => {
+    // PEGANDO A DATA DE HOJE
     const today = new Date();
+
+    // PEGANDO OS INPUTS DO FORM
     const dada = document.forms["formvalidation"]
+
+    // PEGANDO O TODOS OS SPANS PARA MOSTRAR OS ERROS
     const showError = document.querySelectorAll('span.error')
+
+    // PEGANDO TERMOS E CONDIÇÕES
     var terms = dada?.terms?.value
 
     // PEGANDO OS CAMPOS E SEUS RESPETIVOS VÁLORES
@@ -24,8 +34,9 @@ const validacao = () => {
     const number = dada?.number?.value
     const password = dada?.password?.value
     const passwordConfirm = dada?.confirmPassword?.value
-    console.log(terms)
-    // SEPARANDO A DATA EM: DD,MM E AAAA
+
+    // SEPARANDO A DATA EM: DD,MM E AAAA,  E CRIANDO CADA UM DELE 
+    // COMO NÚMERO
     const birthConfirm = {
         birthDay: new Number(dada?.birthDay?.value),
         birthGetMonth: new Number(dada?.birthMonth?.value),
@@ -33,7 +44,7 @@ const validacao = () => {
     }
 
 
-    // CRIANDO REGRAS DE CADA CAMPO DO FORM
+    // CRIANDO REGRAS DE CADA CAMPO DO FORMULÁRIO
     const rulesfieldsValidationForm = {
         ruleTheName: nome.indexOf(" ") == -1,
         ruleTheEmail: email.includes('@')
@@ -57,7 +68,6 @@ const validacao = () => {
         },
         ruleTheConfirmPassword: passwordConfirm != password
     }
-    console.log(rulesfieldsValidationForm)
 
     // VERIFICANDO AS REGRAS
     if (rulesfieldsValidationForm?.ruleTheName) {
@@ -83,6 +93,9 @@ const validacao = () => {
         const error = `o campo DD não pode ser maior que 31`
         errorMessages.push(`${error}`)
     }
+
+
+
     if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthTwo) {
         const error = `o campo MM não pode ser maior que 12`
         errorMessages.push(`${error}`)
@@ -113,13 +126,18 @@ const validacao = () => {
         const error = `A confirmação da senha deve ser igual á senha`
         errorMessages.push(`${error}`)
     }
-    // VALIDÁÇÃO FINAL
+
+    
+    // VALIDÁÇÃO FINAL, VERIFICANDO SE A ARRAY DE ERROR 
+    // TEM ALGO OU NÃO.
     if (errorMessages.length == 0) {
+        // SE TEM
         alert('Formulário válido')
         return true
     } else {
+        // SE NÃO TEM
         const windowErros = errorMessages.map((item, index) => {
-            return index,item
+            return index, item
         })
         alert(`${windowErros}`)
         button.style.display = 'none'
