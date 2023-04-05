@@ -12,36 +12,37 @@ body {
     background: rgb(0, 0, 0);
     font-family: 'popins', sans-serif;
 }
+
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     width: 90%;
     height: 80%;
     border: 1px solid #000;
     background: rgb(0, 0, 0);
-    background: linear-gradient(
-        34deg,
-        rgba(0, 0, 0, 1) 8%,
-        rgba(0, 0, 0, 1) 10%,
-        rgba(5, 33, 9, 1) 80%,
-        rgba(10, 142, 44, 0.770773638968481) 140%
-    );
+    background: linear-gradient(34deg,
+            rgba(0, 0, 0, 1) 8%,
+            rgba(0, 0, 0, 1) 10%,
+            rgba(5, 33, 9, 1) 80%,
+            rgba(10, 142, 44, 0.770773638968481) 140%);
     color: #fff;
     font-family: 'popins', sans-serif;
     gap: 15px;
 }
+
 form .mini_container {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center ;
+    align-items: flex-start;
     flex-direction: column;
     height: 90px;
     width: 90%;
     background: transparent;
 }
+
 form .mini_container label {
     position: absolute;
     display: flex;
@@ -52,16 +53,18 @@ form .mini_container label {
     transition: 0.5s;
     color: #45f3ff;
     pointer-events: none;
-    
+
 }
+
 form .mini_container:hover label {
-    
+
     color: #8f8f8f;
     transform: translateX(10px) translateY(-24px);
     transition: 0.5s;
     font-size: 0.79em;
     top: 0;
 }
+
 form .mini_container input {
     width: 90%;
     height: 50px;
@@ -71,25 +74,28 @@ form .mini_container input {
     font-size: 12pt;
     border: none;
     outline: none;
+<<<<<<< HEAD:styles/styles.css
     box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+=======
+
+>>>>>>> ada63bfc2d86beca7476447603f9d55e25bf2855:rascunho/styles/styles.css
 }
 
-form .mini_container1-botton  button {
+form .mini_container1-botton button {
     padding: 22px 30px;
     color: #45f3ff;
     border-radius: 5px;
     pointer-events: none;
     border: none;
     outline: 0;
-    
-    box-shadow: 0 0 10px, #2196f3 
-    0 0 20px #45f3ff,
-    0 0 80px #45f3ff;
+
+    box-shadow: 0 0 10px, #2196f3 0 0 20px #45f3ff,
+        0 0 80px #45f3ff;
 }
-form .mini_container1-botton:hover button{
-    box-shadow: 0 0 10px, #2196f3 
-    0 0 20px #45f3ff,
-    0 0 80px #45f3ff;
+
+form .mini_container1-botton:hover button {
+    box-shadow: 0 0 10px, #2196f3 0 0 20px #45f3ff,
+        0 0 80px #45f3ff;
 }
 
 .mini_container1-botton {
@@ -101,8 +107,9 @@ form .mini_container1-botton:hover button{
     justify-content: center;
     position: relative;
 }
+
 .container {
-    
+
     color: #8f8f8f;
     width: 85%;
     height: 80px;
@@ -122,49 +129,18 @@ form .mini_container1-botton:hover button{
     outline: none;
     background-color: #2196f3;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     flex-direction: row;
     gap: 10px;
-    
+
 }
 
 .div-password img {
-   width: 28px;
-   cursor: pointer;
-   color: #2196f3
+    width: 28px;
+    cursor: pointer;
 }
 
-form {
-    animation-name: fede;
-    animation-duration: 500ms;
-}
-
-@keyframes  fede {
-    form {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-
-
-form input{
-    animation-name: move;
-    animation-duration: 500ms;
-    animation-delay: 0.250ms;
-}
-@keyframes  move {
-    form {
-        opacity: 0;
-        transform: translateX(-30%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0%);
-    }
+span {
+    color: red;
 }
