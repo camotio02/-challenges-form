@@ -22,9 +22,6 @@ const validacao = () => {
     // PEGANDO OS INPUTS DO FORM
     const dada = document.forms["formvalidation"]
 
-    // PEGANDO O TODOS OS SPANS PARA MOSTRAR OS ERROS
-    const showError = document.querySelectorAll('span.error')
-
     // PEGANDO TERMOS E CONDIÇÕES
     var terms = dada?.terms?.value
 
@@ -50,14 +47,14 @@ const validacao = () => {
         ruleTheEmail: email.includes('@')
             && email.includes('.com'),
         rulesTheNumber: {
-            ruleTheNumberOne: codigosDDD.indexOf(parseInt(number.substring(0, 2))),
-            ruleTheNumberTwo: number.length < 11,
+            ruleTheNumberOne: !codigosDDD.includes(parseInt(number.substring(0, 2))),
+            ruleTheNumberTwo: number.length != 11,
         },
         // DUAS REGRAS PARA O INPUT DATA DE NASCIMENTO
         rulesFieldBirth: {
             ruleTheBirthOne: birthConfirm?.birthDay > 31,
             ruleTheBirthTwo: birthConfirm?.birthGetMonth > 12,
-            ruleTheBirthThree: birthConfirm?.birthGetYear < 1900,
+            ruleTheBirthThree: birthConfirm?.birthGetYear < 1899,
             ruleTheBirthFour: (today.getFullYear() < birthConfirm?.birthGetYear),
         },
         // TRÊS REGRAS PARA O INPUT PASSWORD
@@ -82,8 +79,7 @@ const validacao = () => {
         errorMessages.push(`${error}`)
     }
     if (rulesfieldsValidationForm?.rulesTheNumber?.ruleTheNumberOne) {
-        const error = `Telefone precisa conter o 
-            DDD(Ex.: 41 99928238, não apenas ${number}`
+        const error = `O telefone deve conter DDD, ${number} não é um DDD!`
         errorMessages.push(`${error}`)
     } else if (rulesfieldsValidationForm?.rulesTheNumber?.ruleTheNumberTwo) {
         const error = `Telefone deve ter 11 números`
@@ -93,31 +89,28 @@ const validacao = () => {
         const error = `o campo DD não pode ser maior que 31`
         errorMessages.push(`${error}`)
     }
-
-
-
     if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthTwo) {
         const error = `o campo MM não pode ser maior que 12`
         errorMessages.push(`${error}`)
     }
     if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthThree) {
-        const error = `o campo YYYY não pode ter menos que 4 números`
+        const error = `O ano não pode ser menor que 1900`
         errorMessages.push(`${error}`)
     }
     if (rulesfieldsValidationForm?.rulesFieldBirth?.ruleTheBirthFour) {
         const error = `O ano não pode ser maior que atual!`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldsValidationForm?.ruleThePasswordOne) {
+    if (rulesfieldsValidationForm?.rulesFieldPassword?.ruleThePasswordOne) {
         const error = `O campo senha pelo menos um número`
 
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldsValidationForm?.ruleThePasswordTwo) {
+    if (rulesfieldsValidationForm?.rulesFieldPassword?.ruleThePasswordTwo) {
         const error = `O campo senha deve conter uma letra minuscula pelo menos`
         errorMessages.push(`${error}`)
     }
-    if (rulesfieldsValidationForm?.ruleThePasswordThree) {
+    if (rulesfieldsValidationForm?.rulesFieldPassword?.ruleThePasswordThree) {
         const error = (`O campo senha deve conter 1 simbolo pelo menos`)
 
         errorMessages.push(`${error}`)
@@ -136,15 +129,15 @@ const validacao = () => {
         return true
     } else {
         // SE NÃO TEM
-        const windowErros = errorMessages.map((item, index) => {
-            return(`\n Erro nos campos: ${index + 1} ${item}\n`)
-        })
-        alert(`${windowErros}`)
+        alert(`${errorMessages.map((item)=> {
+            return item
+        })}`)
         button.style.display = 'none'
         buttonError.style.display = 'flex'
         setTimeout(() => {
             buttonError.style.display = 'none'
-            button.style.display = 'flex'
+            button.style.display = 'flex' 
+            errorMessages = []
         }, 4000)
         return false
     }
