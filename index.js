@@ -38,26 +38,23 @@ const validacao = () => {
 
   // CRIANDO REGRAS DE CADA CAMPO DO FORMULÁRIO
   const rulesfieldsValidationForm = {
-    ruleTheName: nome.indexOf(" ") !== -1,
-    ruleTheEmail: email.includes("@") && email.includes(".com"),
-    rulesTheNumber: {
-      ruleTheNumberOne: codigosDDD.includes(parseInt(number.substring(0, 2))),
-      ruleTheNumberTwo: number.length === 11,
-    },
+    name: nome.indexOf(" ") !== -1,
+    email: email.includes("@") && email.includes(".com"),
+    number:
+      codigosDDD.includes(parseInt(number.substring(0, 2))) &&
+      number.length === 11,
     // DUAS REGRAS PARA O INPUT DATA DE NASCIMENTO
-    rulesFieldBirth: {
-      ruleTheBirthOne: 0 > birthConfirm?.birthDay > 31,
-      ruleTheBirthTwo: 0 > birthConfirm?.birthGetMonth > 12,
-      ruleTheBirthThree: birthConfirm?.birthGetYear < 1899,
-      ruleTheBirthFour: today.getFullYear() < birthConfirm?.birthGetYear,
-    },
+    birth:
+      0 > birthConfirm?.birthDay > 31 &&
+      0 > birthConfirm?.birthGetMonth > 12 &&
+      birthConfirm?.birthGetYear < 1899 &&
+      today.getFullYear() < birthConfirm?.birthGetYear,
     // TRÊS REGRAS PARA O INPUT PASSWORD
-    rulesFieldPassword: {
-      ruleThePasswordOne: password.match(/[0-9]/g),
-      ruleThePasswordTwo: password.match(/[a-z]/g),
-      ruleThePasswordThree: password.match(/[/@#$?]/g),
-    },
-    ruleTheConfirmPassword: passwordConfirm != password,
+    password:
+      password.match(/[0-9]/g) &&
+      password.match(/[a-z]/g) &&
+      password.match(/[/@#$?]/g),
+    confirmPassword: passwordConfirm == password,
   };
 
   // VERIFICANDO AS REGRAS
