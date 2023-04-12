@@ -18,11 +18,11 @@ export const fieldValidationRules = {
   },
   // DUAS REGRAS PARA O INPUT DATA DE NASCIMENTO
   birth: {
-    rule: (date) =>
-      0 > date?.birthDay > 31 &&
-      0 > date?.birthGetMonth > 12 &&
-      date?.birthGetYear < 1899 &&
-      today.getFullYear() < date?.birthGetYear,
+    rule: (date,today) =>
+      0 > new Number(date.split('-')[2]) > 31 &&
+      0 > new Number(date.split('-')[1]) > 12 &&
+      new Number(date.split('-')[0]) < 1899 &&
+      today.getFullYear() < new Number(date.split('-')[0]),
     message: `o campo DD não pode ser maior que 31, o campo MM não pode ser maior que 12,O ano não pode ser menor que 1900,O ano não pode ser maior que atual!`,
   },
   // TRÊS REGRAS PARA O INPUT PASSWORD
