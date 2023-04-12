@@ -1,129 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulário</title>
     <link rel="stylesheet" href="./styles/stylesTwo.css" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container">
-      <form class="forms" onsubmit="return validacao()" name="formvalidation">
-        <h1>Formulário</h1>
-        <div class="input-group">
-          <div class="input-group-icon">
-            <input
-              name="name"
-              placeholder="Digita seu nome completo"
-              type="text"
-              value=""
-            />
-            <div class="input-icon">
-              <img class="input-icon" src="../image/user.png" alt="" />
+        <form class="forms" onsubmit="return validacao()" name="formvalidation">
+            <h1>Formulário</h1>
+            <div class="input-group">
+                <div class="input-group-icon">
+                    <input name="name" placeholder="Digita seu nome completo" type="text" value="" />
+                    <div class="input-icon">
+                        <img class="input-icon" src="../image/user.png" alt="" />
+                    </div>
+                    <span class="error"></span>
+                </div>
             </div>
-            <span class="error"></span>
-          </div>
-        </div>
-        <div class="input-group">
-          <div class="input-group-icon">
-            <input
-              name="email"
-              placeholder="Digita seu email, ex: timu@snowman.com"
-              type="text"
-              value=""
-            />
-            <div class="input-icon">
-              <img class="input-icon" src="../image/mail.png" alt="" />
+            <div class="input-group">
+                <div class="input-group-icon">
+                    <input name="email" placeholder="Digita seu email, ex: timu@snowman.com" type="text" value="" />
+                    <div class="input-icon">
+                        <img class="input-icon" src="../image/mail.png" alt="" />
+                    </div>
+                    <span class="error"></span>
+                </div>
             </div>
-            <span class="error"></span>
-          </div>
-        </div>
-        <div class="input-group">
-          <div class="input-group-icon">
-            <input
-              name="number"
-              placeholder="Digita seu número do telefone"
-              type="number"
-              value=""
-            />
-            <div class="input-icon">
-              <img class="input-icon" src="../image/contact-book.png" alt="" />
+            <div class="input-group">
+                <div class="input-group-icon">
+                    <input name="number" placeholder="Digita seu número do telefone" type="number" value="" />
+                    <div class="input-icon">
+                        <img class="input-icon" src="../image/contact-book.png" alt="" />
+                    </div>
+                    <span class="error"></span>
+                </div>
             </div>
-            <span class="error"></span>
-          </div>
-        </div>
-        <div class="input-group">
-          <div class="input-group-icon">
-            <input
-              name="password"
-              placeholder="Criar uma senha!"
-              type="password"
-              value=""
-            />
-            <div class="input-icon">
-              <img class="input-icon" src="../image/padlock.png" alt="" />
+            <div class="input-group">
+                <div class="input-group-icon">
+                    <input name="password" placeholder="Criar uma senha!" type="password" value="" />
+                    <div class="input-icon">
+                        <img class="input-icon" src="../image/padlock.png" alt="" />
+                    </div>
+                    <span class="error"></span>
+                </div>
             </div>
-            <span class="error"></span>
-          </div>
-        </div>
-        <div class="input-group">
-          <div class="input-group-icon">
-            <input
-              name="confirmPassword"
-              placeholder="Confirmar a sua senha!"
-              type="password"
-              value=""
-            />
-            <div class="input-icon">
-              <img class="input-icon" src="../image/padlock.png" alt="" />
+            <div class="input-group">
+                <div class="input-group-icon">
+                    <input name="confirmPassword" placeholder="Confirmar a sua senha!" type="password" value="" />
+                    <div class="input-icon">
+                        <img class="input-icon" src="../image/padlock.png" alt="" />
+                    </div>
+                    <span class="error"></span>
+                </div>
             </div>
-            <span class="error"></span>
-          </div>
-        </div>
-        <div class="col-half">
-          <h4>Data de nascimento</h4>
-          <div class="input-group">
-            <div class="col-third">
-              <input name="birthDay" type="text" placeholder="DD" value="" />
+            <div class="col-half">
+                <h4>Data de nascimento</h4>
+                <div class="input-group">
+                    <input name="date" type="date" value="" />
+                </div>
             </div>
-            <div class="col-third">
-              <input name="birthMonth" type="text" placeholder="MM" value="" />
-            </div>
-            <div class="col-third">
-              <input name="birthYear" type="text" placeholder="YYYY" value="" />
-            </div>
-          </div>
-        </div>
-        <div class="col-half">
-          <h4>Sexo</h4>
-          <div class="input-group">
-            <input
-              checked
-              name="sexo"
-              id="gender-male"
-              type="radio"
-              value="male"
-            />
-            <label for="gender-male">Masculino</label>
+            <div class="col-half">
+                <h4>Sexo</h4>
+                <div class="input-group">
+                    <input checked name="sexo" id="gender-male" type="radio" value="male" />
+                    <label for="gender-male">Masculino</label>
 
-            <input name="sexo" id="gender-female" type="radio" value="female" />
-            <label for="gender-female">Femenino </label>
-          </div>
-        </div>
-        <div class="input-group">
-          <input id="date" type="date" name="date" />
-        </div>
-        <h4>Termos e condições</h4>
-        <div class="input-group">
-          <input id="terms" type="checkbox" name="terms" />
-          <label for="terms">Você aceita teros e condições?</label>
-        </div>
-        <button class="button" onclick="validacao()">Validar os dados</button>
-        <div class="showFieldsErros">O formulário não pode ser enviado!</div>
-      </form>
+                    <input name="sexo" id="gender-female" type="radio" value="female" />
+                    <label for="gender-female">Femenino </label>
+                </div>
+            </div>
+            <h4>Termos e condições</h4>
+            <div class="input-group">
+                <input id="terms" type="checkbox" name="terms" />
+                <label for="terms">Você aceita teros e condições?</label>
+            </div>
+            <button class="button" onclick="validacao()">Validar os dados</button>
+            <div class="showFieldsErros">O formulário não pode ser enviado!</div>
+        </form>
     </div>
     <script src="./index.js"></script>
-  </body>
+</body>
+
 </html>
