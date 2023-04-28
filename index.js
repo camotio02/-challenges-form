@@ -1,5 +1,5 @@
+import { areaCodes } from "./js/areaCodes.js";
 import { fieldValidationRules } from "./js/fieldValidationRules.js";
-
 //CRIANDO O ARRAY DE ERROS
 var errorMessages = [];
 var button = document.querySelector(".button");
@@ -10,7 +10,6 @@ var container = document.querySelector(".container");
 export const validacao = () => {
     // PEGANDO A DATA DE HOJE
     const today = new Date();
-
     // PEGANDO OS INPUTS DO FORM
     const data = document.forms["formvalidation"];
     // PEGANDO TERMOS E CONDIÇÕES
@@ -18,16 +17,18 @@ export const validacao = () => {
 
     // PEGANDO OS CAMPOS E SEUS RESPETIVOS VÁLORES
     const fields = {
-        nome: data?.name?.value,
+        name: data?.name?.value,
         email: data?.email?.value,
         number: data?.number?.value,
         password: data?.password?.value,
         passwordConfirm: data?.confirmPassword?.value,
-        date: data.date?.value,
+        birth: data?.date?.value,
+        banana: ''
     };
-    const dateSplited = data.date.value.split("-");
+    const [year, month, day] = fields.birth.split("-");
     let isValid = true;
-    const errors = {};
+    const errors = [];
+    let errorMessage = ""
     for (let [key, value] of Object.entries(fields)) {
         const validation = fieldValidationRules[key];
         if (!validation) {
@@ -35,14 +36,17 @@ export const validacao = () => {
             continue;
         }
         const { rule, message } = validation;
-        isValid = rule(value)
-
+        isValid = rule(value);
 
         if (!isValid) {
-            const pushedErrors = errors[key] = message;
-            alert(`${pushedErrors}`)
+            errors.push(message);
+            errorMessage +=  "\n" + message
         }
     }
+    console.log(isValid);
+    console.log(errorMessage);
+    
+    alert(errorMessage)
     return false;
 };
 document.querySelector("form").onsubmit = validacao;
